@@ -1,0 +1,39 @@
+name: Basic CI Pipeline
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: echo "Installing dependencies..."
+
+      - name: Build the project
+        run: echo "Build completed!"
+
+  test:
+    needs: build      # test runs AFTER build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        run: echo "Running tests..."
+
+  deploy:
+    needs: test       # deploy runs AFTER test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy the project
+        run: echo "Deploying application..."
