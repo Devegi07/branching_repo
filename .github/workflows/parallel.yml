@@ -1,0 +1,31 @@
+name: Parallel Jobs Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 1
+        run: |
+          echo "Job 1 running"
+          echo "Run ID: $GITHUB_RUN_ID"
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 2
+        run: |
+          echo "Job 2 running"
+          echo "Run ID: $GITHUB_RUN_ID"
+
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 3
+        run: |
+          echo "Job 3 running"
+          echo "Run ID: $GITHUB_RUN_ID"
